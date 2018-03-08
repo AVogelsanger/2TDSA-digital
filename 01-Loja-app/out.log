@@ -1,0 +1,13 @@
+2018-02-15 09:00:38 WARN  TerminalConsulta:23 - Iniciando a aplicação
+2018-02-15 09:00:38 INFO  TerminalConsulta:33 - Recuperando as configurações da aplicação
+2018-02-15 09:00:43 ERROR TerminalConsulta:56 - Produto não encontrado
+2018-02-15 09:00:44 INFO  TerminalConsulta:45 - Usuário desligando o sistema
+2018-02-15 09:00:44 WARN  TerminalConsulta:61 - Finalizando a aplicação
+2018-02-15 09:03:12 WARN  TerminalConsulta:23 - Iniciando a aplicação
+2018-02-15 09:03:12 INFO  TerminalConsulta:33 - Recuperando as configurações da aplicação
+2018-02-15 09:03:14 INFO  TerminalConsulta:49 - Consultando produto 401
+2018-02-15 09:03:14 INFO  TerminalConsulta:52 - Produto encontrado
+2018-02-15 09:03:15 INFO  TerminalConsulta:49 - Consultando produto 402
+2018-02-15 09:03:15 INFO  TerminalConsulta:52 - Produto encontrado
+2018-02-15 09:03:16 INFO  TerminalConsulta:45 - Usuário desligando o sistema
+2018-02-15 09:03:16 WARN  TerminalConsulta:63 - Finalizando a aplicação
