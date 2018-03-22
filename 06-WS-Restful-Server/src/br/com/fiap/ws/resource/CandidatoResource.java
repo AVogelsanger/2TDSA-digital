@@ -30,26 +30,27 @@ public class CandidatoResource {
 
 	private CandidatoDAO dao;
 
+	//Inicializa o DAO no construtor
 	public CandidatoResource() {
 		EntityManager em = EntityManagerFactorySingleton.getInstance().createEntityManager();
 		dao = new CandidatoDAOImpl(em);
 	}
 
 	@GET
-	@Path("{id}")
+	@Path("{id}")// recebe o caminha na nossa url
 	@Produces(MediaType.APPLICATION_JSON)
 	public Candidato buscar(@PathParam("id") int codigo) {
 		return dao.buscar(codigo);
 	}
 	
 	@GET
-	@Produces(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)// recebe a informação do usuário
 	public List<Candidato> listar(){
 		return dao.listar();
 	}
 
 	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)  //o @Contex serve para devolver o link para o usuario
 	public Response cadastrar(Candidato candidato, @Context UriInfo uri) {
 		try {
 			dao.cadastrar(candidato);
@@ -64,10 +65,10 @@ public class CandidatoResource {
 	} 
 	
 	
-	@PUT
-	@Path("/{id}")
+	@PUT 
+	@Path("/{codigo}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response atualizar(Candidato candidato, @PathParam("id")int codigo) {
+	public Response atualizar(Candidato candidato, @PathParam("codigo")int codigo) {
 		try {
 		candidato.setCodigo(codigo);
 		dao.atualizar(candidato);
