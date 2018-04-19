@@ -69,7 +69,7 @@ public class CandidatoService {
 		//configura a URL para enviar a requisição
 		WebResource resource = client.resource(URL);
 
-		//chama o WS e recupera a respósta
+		//chama o WS e recupera a resposta
 		ClientResponse response = resource
 				//Formato dos dados que serão enviados (JSON)
 				.type(MediaType.APPLICATION_JSON)

@@ -1,0 +1,7 @@
+10/05 - NAC Prática REST+JSF
+
+#01 - WS restful serv + jpa > projeto 6
+
+#02 - WS restful client - consele > projeto 7
+
+#03 - ws restful Client - JSF > projeto 8

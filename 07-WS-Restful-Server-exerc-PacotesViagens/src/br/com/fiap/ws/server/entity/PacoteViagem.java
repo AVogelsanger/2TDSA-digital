@@ -15,7 +15,7 @@ public class PacoteViagem {
 	
 	@Id
 	@Column(name="cd_codigo")
-	@GeneratedValue(generator="codigo", strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(generator="pacoteViagem", strategy=GenerationType.SEQUENCE)
 	private int codigo;
 	
 	@Column(name="ds_destino", nullable=false)
