@@ -13,14 +13,14 @@ import br.com.fiap.ws.to.NoticiaTO;
 
 public class NoticiaService {
 
-	private static String URL = "http://localhost:8080/09-WS-Restful-Server-News/rest/noticia";
+	private static String URL = "http://localhost:8080/06-WS-Restful-Server/rest/noticia";
 	Client client = Client.create();
 	
 	public void cadastrar(NoticiaTO noticia) throws Exception {
 		
 		WebResource resource = client.resource(URL);
 		
-		ClientResponse response = resource.type(MediaType.APPLICATION_JSON).post(ClientResponse.class);
+		ClientResponse response = resource.type(MediaType.APPLICATION_JSON).post(ClientResponse.class, noticia);
 		
 		if (response.getStatus() != 201) {
 			throw new Exception("ERRO" + response.getStatus());

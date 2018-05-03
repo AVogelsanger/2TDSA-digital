@@ -5,11 +5,13 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import br.com.fiap.ws.service.NoticiaService;
 import br.com.fiap.ws.to.NoticiaTO;
 
+@ManagedBean
 public class NoticiaBean {
 
 	private NoticiaTO noticia;
@@ -22,7 +24,7 @@ public class NoticiaBean {
 		service = new NoticiaService();
 	}
 	
-	public void excluir(int codigo) {
+	public String excluir(int codigo) {
 		FacesMessage msg;
 		try {
 			service.remover(codigo);
@@ -31,6 +33,9 @@ public class NoticiaBean {
 			e.printStackTrace();
 			msg = new FacesMessage("Noticia não removida.");
 		}
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+		return "lista-noticias?faces-redirect=true";
 	}
 	
 	public List<NoticiaTO> getNoticias() {
@@ -46,21 +51,22 @@ public class NoticiaBean {
 		FacesMessage msg;
 		
 		try {
+			
 			if (noticia.getCodigo() == 0) {
 				service.cadastrar(noticia);
 				msg = new FacesMessage("Cadastrado com sucesso!");
-			}else {
+			} else {
 				service.atualizar(noticia);
-				msg = new FacesMessage("Atualizado com sucesso!");
-				return "lista-noticia.";
+				msg = new FacesMessage("Atualizado!");
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			msg = new FacesMessage("Não foi possível cadastrar!");
-			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			msg = new FacesMessage("Erro!");
 		}
 		FacesContext.getCurrentInstance().addMessage(null, msg);
-		return "noticia";
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+		return "lista-noticias?faces-redirect=true";
 	}
 	
 

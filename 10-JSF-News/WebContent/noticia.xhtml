@@ -1,9 +1,50 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" 
-      xmlns:ui="http://java.sun.com/jsf/facelets" 
-      xmlns:h="http://java.sun.com/jsf/html" 
-      xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 
-   
-   
+<ui:composition template="/_template.xhtml">
+	<ui:define name="content">
+
+
+		<h1>Notícia</h1>
+		<h:messages styleClass="alert alert-info" />
+		<h:form>
+			<h:inputHidden value="#{noticiaBean.noticia.codigo}" />
+			<div class="form-group">
+				<h:outputLabel value="Título" for="titulo" />
+				<h:inputText value="#{noticiaBean.noticia.titulo}" required="true" id="titulo"
+					class="form-control">
+					<f:validateLength minimum="5" maximum="50"/>
+				</h:inputText>
+				<h:message for="titulo" styleClass="text-danger"/>
+			</div>
+			<div class="form-group">
+				<h:outputLabel value="Conteúdo" for="conteudo" />
+				<h:inputTextarea value="#{noticiaBean.noticia.conteudo}"
+					id="conteudo" class="form-control" />
+			</div>
+			<div class="form-group">
+				<h:selectBooleanCheckbox id="pub"
+					value="#{noticiaBean.noticia.publicado}" />
+				<h:outputLabel value="Publicado? (S/N)" for="pub" />
+			</div>
+			<div class="form-group">
+				<h:outputLabel value="Data: " for="data" />
+				<h:inputText id="data" value="#{noticiaBean.noticia.data.time}"
+					class="form-control">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:inputText>
+				<h:message for="data" styleClass="text-danger"/>
+			</div>
+			<div class="form-group">
+				<h:commandButton styleClass="mr-2 btn btn-outline-primary btn-sm"
+					action="#{noticiaBean.salvar()}" value="salvar" />
+				<h:link styleClass="btn btn-dark" outcome="lista-noticias">Lista de notícias</h:link>
+			</div>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
 </html>
