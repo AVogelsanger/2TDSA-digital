@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<h:head>
+	<title>Filmes</title>
+</h:head>
+<h:body>
+
+	<h1>Cadastro de Filmes</h1>
+	<h:form>
+		<h:messages />
+		<div>
+			<h:outputLabel value="Título" for="titulo" />
+			<h:inputText value="#{filmeBean.filme.titulo}" id="titulo" />
+		</div>
+		<div>
+			<h:outputLabel value="Duração" for="duracao" />
+			<h:inputText value="#{filmeBean.filme.duracao}" id="duracao" />
+		</div>
+		<div>
+			<h:selectBooleanCheckbox value="#{filmeBean.filme.download}"
+				id="download" />
+			<h:outputLabel value="Download" for="download" />
+		</div>
+		<h:commandButton action="#{filmeBean.cadastrar()}" value="Salvar" />
+	</h:form>
+
+	<h2>Lista de Filmes</h2>
+	<h:dataTable value="#{filmeBean.listar()}" var="f">
+		<h:column>
+			<f:facet name="header">Título</f:facet>
+      	#{f.titulo}
+      </h:column>
+		<h:column>
+			<f:facet name="header">Duração</f:facet>
+      	#{f.duracao}
+      </h:column>
+		<h:column>
+			<f:facet name="header">Download</f:facet>
+      	#{f.download}
+      </h:column>
+	</h:dataTable>
+</h:body>
+</html>
